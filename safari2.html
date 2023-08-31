@@ -5,10 +5,6 @@
   <meta content="width=device-width,initial-scale=1" name="viewport">
   <title>iOS safariにて画面外でファイルアップロードのバリデーションエラーが発生した場合にフォーカスだけ当たってスクロールしない【バグ修正版】</title>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
     p {
       height: 250vh;
       background-color: azure;
@@ -35,7 +31,7 @@
 
   <script>
     // inputにfocusが当たったのに、スクロールしない場合に強制的にスクロールさせる
-    const input = document.querySelector('input');
+    const input = document.querySelector('#file-upload');
     input.addEventListener('focus', () => {
       // 発火したときに画面外だった場合、画面内にスクロールする
       // 少し遅らせないと、エラーヒントが表示されない
