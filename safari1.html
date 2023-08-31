@@ -1,0 +1,39 @@
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>iOS safariにて画面外でファイルアップロードのバリデーションエラーが発生した場合にフォーカスだけ当たってスクロールしない【バグ確認用】</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    p {
+      height: 250vh;
+      background-color: azure;
+      padding: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>iOS safariにて画面外でファイルアップロードのバリデーションエラーが発生した場合にフォーカスだけ当たってスクロールしない【バグ確認用】</h1>
+  <form>
+    <div>
+      <label for="file-upload">ファイルアップロード:</label>
+      <input type="file" id="file-upload" name="userfile" required />
+      <br><br>
+      <a href="./safari2.html">バグ修正版</a>
+    </div>
+    <p>
+      なんかながーいコンテンツ
+      <br>下の方にSubmitボタンがある。
+    </p>
+    <div><input type="submit"></div>
+  </form>
+
+
+</body>
+
+</html>
