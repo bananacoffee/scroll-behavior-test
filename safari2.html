@@ -1,0 +1,54 @@
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>iOS safariにて画面外でファイルアップロードのバリデーションエラーが発生した場合にフォーカスだけ当たってスクロールしない【バグ修正版】</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    p {
+      height: 250vh;
+      background-color: azure;
+      padding: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>iOS safariにて画面外でファイルアップロードのバリデーションエラーが発生した場合にフォーカスだけ当たってスクロールしない【バグ修正版】</h1>
+  <form>
+    <div>
+      <label for="file-upload">ファイルアップロード:</label>
+      <input type="file" id="file-upload" name="userfile" required />
+      <br><br>
+      <a href="./safari1.html">バグ確認</a>
+    </div>
+    <p>
+      なんかながーいコンテンツ
+      <br>下の方にSubmitボタンがある。
+    </p>
+    <div><input type="submit"></div>
+  </form>
+
+  <script>
+    // inputにfocusが当たったのに、スクロールしない場合に強制的にスクロールさせる
+    const input = document.querySelector('input');
+    input.addEventListener('focus', () => {
+      // 発火したときに画面外だった場合、画面内にスクロールする
+      // 少し遅らせないと、エラーヒントが表示されない
+      setTimeout(() => {
+        const rect = input.getBoundingClientRect()
+        if (rect.top < 0 || rect.bottom > window.innerHeight) {
+          el.scrollIntoView()
+          document.querySelector("p", "スクロールしたよ！")
+        }
+      }, 100)
+    });
+  </script>
+
+</body>
+
+</html>
